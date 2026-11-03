@@ -1,0 +1,9 @@
+nithin@Kailas:~/Desktop/go/go_tutorials$ go build cmd/tutorial_1/main.go
+# command-line-arguments
+cmd/tutorial_1/main.go:4:1: syntax error: non-declaration statement outside function body
+nithin@Kailas:~/Desktop/go/go_tutorials$ go build cmd/tutorial_1/main.go
+nithin@Kailas:~/Desktop/go/go_tutorials$ ./main
+Hello World!
+nithin@Kailas:~/Desktop/go/go_tutorials$ go run cmd/tutorial_1/main.go 
+Hello World!
+nithin@Kailas:~/Desktop/go/go_tutorials$ 
