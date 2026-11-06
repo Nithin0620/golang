@@ -1,10 +1,9 @@
 package handlers
 
 import (
-	"net/http"
+	"github.com/Nithin0620/golang/internal/middleware"
 	"github.com/go-chi/chi"
 	chimiddle "github.com/go-chi/chi/middleware"
-	"github.com/avukadin/goapi/internal/middleware"
 )
 
 // creating a function with uppercase starting letter to make it public and accessible from other packages
@@ -14,10 +13,10 @@ func Handler(r *chi.Mux) {
 	r.Use(chimiddle.StripSlashes)
 
 	r.Route("/account", func(router chi.Router) {
-		
+
 		//Middleware for /account route
 		router.Use(middleware.Authorization)
 
-		router.Get("/coins",GetCoinBalance)
+		router.Get("/coins", GetCoinBalance)
 	})
 }

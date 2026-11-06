@@ -1,21 +1,19 @@
- package middleware
+package middleware
 
- import (
+import (
 	"errors"
-	"fmt"
 	"net/http"
 
-	"github.com/avukadin/goapo/api"
-	"github.com/avukadin/goapi/internal/tools"
+	"github.com/Nithin0620/golang/api"
+	"github.com/Nithin0620/golang/internal/tools"
 	log "github.com/sirupsen/logrus"
 )
 
-
-var unAuthorizedError = errors.New(fmt.Sprintf("Invalid Username or token."))
+var unAuthorizedError = errors.New("Invalid Username or token.")
 
 func Authorization(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		
+
 		var username string = r.URL.Query().Get("username")
 		var token string = r.Header.Get("Authorization")
 		var err error
@@ -25,7 +23,7 @@ func Authorization(next http.Handler) http.Handler {
 			return
 		}
 
-		var database *tools.DatabaseInterface
+		var database tools.DatabaseInterface
 		database, err = tools.NewDatabase()
 		if err != nil {
 			api.InternalErrorHandler(w)
@@ -33,14 +31,14 @@ func Authorization(next http.Handler) http.Handler {
 		}
 
 		var loginDetails *tools.LoginDetails
-		loginDetails = (*database).GetUserLoginDetails(username)
+		loginDetails = database.GetUserLoginDetails(username)
 
-		if(loginDetails == nil || (token != (*loginDetails).AuthToken)) {
+		if loginDetails == nil || (token != (*loginDetails).AuthToken) {
 			log.Error(unAuthorizedError)
 			api.RequestErrorHandler(w, unAuthorizedError)
 			return
 		}
 
-		next.ServeHTTP(w,r)
+		next.ServeHTTP(w, r)
 	})
 }

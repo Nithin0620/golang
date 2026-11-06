@@ -10,7 +10,7 @@ type LoginDetails struct {
 	Username  string
 }
 type CoinDetails struct {
-	Coins   int64
+	Coins    int64
 	Username string
 }
 
@@ -20,7 +20,7 @@ type DatabaseInterface interface {
 	SetupDatabase() error
 }
 
-func NewDatabase() (*DatabaseInterface, error) {
+func NewDatabase() (DatabaseInterface, error) {
 
 	var database DatabaseInterface = &mockDB{}
 
@@ -30,5 +30,5 @@ func NewDatabase() (*DatabaseInterface, error) {
 		return nil, err
 	}
 
-	return &database, nil
+	return database, nil
 }
