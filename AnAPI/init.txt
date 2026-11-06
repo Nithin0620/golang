@@ -5,3 +5,12 @@ go mod init github.com/Nithin0620/${{RepoName}}
 
 go mod tidy 
 ->> To install all the packages form the imports from any file of the project 
+
+
+
+to start=>
+go run cmd/api/main.go
+
+then test=>
+http://localhost:8000/account/coins/?username=jason
+Authorization Header as 456DEF
