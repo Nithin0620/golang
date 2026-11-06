@@ -20,3 +20,6 @@ func sumSlice[T int| float64 | float32](slice []T) T { // this is how we can cre
 
 	return sum
 }
+
+// we also have an any type in this generics but it might not be compatible with all options alike + is not compatible with any type and hence we need to use the type constraint to specify the types that are allowed for the type parameter T
+//

@@ -1,0 +1,7 @@
+go mod init github.com/Nithin0620/${{RepoName}}
+->> TO init the Go Project 
+
+
+
+go mod tidy 
+->> To install all the packages form the imports from any file of the project 
